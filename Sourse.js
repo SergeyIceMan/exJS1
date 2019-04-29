@@ -1,6 +1,6 @@
 'use strict';
 
-let money=prompt("Ваш бюджет на месяц?",''),
+let money=+prompt("Ваш бюджет на месяц?",''),
     time=prompt("Введите дату в формате YYYY-MM-DD",'');
 let  appData={
     b:money,
@@ -11,12 +11,46 @@ let  appData={
     savings:false
 };
 
-let a1=prompt("Введите обязательную статью расходов в этом месяце",''),
-    a2=prompt("Во сколько обойдется?",''),
-    b1=prompt("Введите обязательную статью расходов в этом месяце",''),
-    b2=prompt("Во сколько обойдется?",'');
 
-appData.expenses.a1=a2;
-appData.expenses.b1=b2;
+appData.ra=appData.b/30;
+/*
+for(let i=0; i < 2; i++) {
+let    a=prompt("Введите обязательную статью расходов в этом месяце",''),
+       b=prompt("Во сколько обойдется?",'');
+    if( typeof(a) === 'string'  && typeof(a) != null && typeof(b) != null 
+    && a!='' && b!='' && a.length < 50){
+        appData.expenses[a] =b;   
+        console.log("done") ;  
+    }
+    else if( typeof(a) === 'string'  && typeof(a) != null && a!='' && a.length < 50){
+        b=prompt("Повторите ввод суммы для статьи расходов:"+a,'');
+             if(typeof(b) != null  && b!=''){
+                appData.expenses[a] =b;   
+                 console.log("done2") ;  
+            }
+        }
+    
+}*/
+let i=0;
+while (i < 2){
+    let    a=prompt("Введите обязательную статью расходов в этом месяце",''),
+    b=prompt("Во сколько обойдется?",'');
+ if( typeof(a) === 'string'  && typeof(a) != null && typeof(b) != null 
+ && a!='' && b!='' && a.length < 50){
+     appData.expenses[a] =b;   
+     console.log("done") ;  
+ }
+ else if( typeof(a) === 'string'  && typeof(a) != null && a!='' && a.length < 50){
+     b=prompt("Повторите ввод суммы для статьи расходов:"+a,'');
+          if(typeof(b) != null  && b!=''){
+             appData.expenses[a] =b;   
+              console.log("done2") ;  
+         }
+     }
+i++;
+};
 
-alert(appData.b/30);
+
+alert("Ежедневный доход: "+ appData.ra);
+
+
